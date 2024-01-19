@@ -2,18 +2,35 @@
 
 <section class="login-Form">
     <h2 class="titlePage">Login to JobsRUs</h2>
-    <form class="loginForm">
-        <section class="usernameGroup">
-            <label for="user-login">Username:</label>
-            <input class="userInput" type="text" id="user-login" />
+    <form class="formCard" id="loginForm">
+        <section class="formArea" id="usernameArea">
+            <label for="userLogin">Username:</label>
+            <input class="formInput" type="text" id="userLogin" />
         </section>
-        <section class="passwordGroup">
-            <label for="password-login">Password:</label>
-            <input class="passwordInput" type="text" id="password-login" />
+        <section class="formArea" id="passwordArea">
+            <label for="passwordLogin">Password:</label>
+            <input class="formInput" type="text" id="passwordLogin" />
         </section>
-        <button class="btn">
-
-        </button>
+        <section>
+            <button class="loginBtn" type="submit">Login</button>
+        </section>
+    </form>
+</section>
+<section class="signupForm">
+    <h2 class="titlePage">Don't have an account? Sign up for free!</h2>
+    <form class="formCard">
+        <section class="formArea" id="signupUsername">
+            <label for="usernameSignup">Username:</label>
+            <input class="formInput" type="text" id="usernameSignup">
+        </section>
+        <section class="formArea" id="signupEmail">
+            <label for="emailSignup">Email:</label>
+            <input class="formInput" type="text" id="emailSignup">
+        </section>
+        <section class="formArea" id="signupPassword">
+            <label for="passwordSignup">Password:</label>
+            <input class="formInput" type="text" id="passwordSignup">
+        </section>
     </form>
 </section>
 
