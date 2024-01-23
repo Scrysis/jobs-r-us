@@ -14,6 +14,10 @@ Job.hasMany(Review, {
     foreignKey: 'review_id',
 });
 
+Review.belongsTo(Job, {
+    foreignKey: 'job_Id',
+});
+
 User.hasMany(Job, {
     as: 'job',
     foreignKey: 'job_Id',
@@ -22,6 +26,7 @@ User.hasMany(Job, {
 User.belongsToMany(Job, {
     through: {
         model: Application,
+        unique: false,
     },
     as: 'job_entry',
 });
@@ -29,6 +34,7 @@ User.belongsToMany(Job, {
 Job.belongsToMany(User, {
     through: {
         model: Application,
+        unique: false,
     },
     as: 'job_applicant',
 });
