@@ -36,4 +36,6 @@ Job.init(
         underscored: true,
         modelName: 'job'
     }
-)
+);
+
+module.exports = Job;
