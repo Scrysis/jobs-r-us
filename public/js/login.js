@@ -42,7 +42,7 @@ const signupForm = async (event) => {
         if (username) 
     }
 };
-// Add code for user already created/pick new username
+// Add code for user already created/pick new username??
 
 document
     .querySelector('.loginForm')
