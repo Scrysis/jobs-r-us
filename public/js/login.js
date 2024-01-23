@@ -32,11 +32,14 @@ const signupForm = async (event) => {
             body: JSON.stringify({ username, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
+
         if (response.ok) {
             document.location.replace('/');
         } else {
             alert('Could not create account. Please try later')
         }
+
+        if (username) 
     }
 };
 // Add code for user already created/pick new username
