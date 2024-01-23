@@ -39,8 +39,12 @@ const signupForm = async (event) => {
             alert('Could not create account. Please try later')
         }
 
-        if (username) 
-    }
+        if (username) {
+            alert('Username is available')
+        } else {
+            alert('Username is taken. Please try a new one')
+         }
+        }
 };
 // Add code for user already created/pick new username??
 
