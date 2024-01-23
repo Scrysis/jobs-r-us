@@ -1,15 +1,34 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const Sequelize = require('sequelize');
 
-router.get('/users', async (req, res) => {
-  const users = await User.findAll();
-  res.json(users);
+const sequelize = new Sequelize('job', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql'
 });
 
-router.post('/users', async (req, res) => {
-  const user = await User.create(req.body);
-  res.json(user);
+// GET /api/jobs - Retrieve all jobs
+router.get('/jobs', async (req, res) => {
+  try {
+    const jobs = await sequelize.model('Job').findAll({});
+    res.json(jobs);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error retrieving jobs' });
+  }
 });
 
-module.exports = router;
+// GET /api/jobs/:id - Retrieve a single job by ID
+router.get('/jobs/:id', async (req, res) => {
+  try {
+    const job = await sequelize.model('Job').findById(req.params.id);
+    if (!job) {
+      res.status(404).json({ message: 'Job not found' });
+    } else {
+      res.json(job);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error retrieving job' });
+  }
+});
