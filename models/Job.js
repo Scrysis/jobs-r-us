@@ -1,10 +1,7 @@
 const {Model, Datatypes } = require('sequelize');
 const sequelize = require('../config/connection');
-import { matchSorter } from 'match-sorter';
 
-class Job extends Model {
-    
-}
+class Job extends Model {}
 
 Job.init(
     {
@@ -28,8 +25,8 @@ Job.init(
                 model: 'user',
                 key: 'id',
                 unique: false
-            }
-        }
+            },
+        },
     },
     {
         sequelize,
