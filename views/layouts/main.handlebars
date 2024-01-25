@@ -11,14 +11,27 @@
         <h1>Welcome to Jobs R Us!</h1>
     </header>
     <nav>
-        <a href="/">Homepage</a>
-        {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <a href="/list">Post a Job</a>
-        <button id="logout-btn" class="logout-btn">Logout</button>
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
+        <ul>
+            <li>
+                <a href="/">Homepage</a>
+            </li>
+            
+                {{#if loggedIn}}
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+            <li>
+                <a href="/list">Post a Job</a>
+            </li>
+            <li>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </li>
+                {{else}}
+            <li>
+                <a href="/login">Login</a>
+            </li>
+                {{/if}}
+        </ul>
     </nav>
 <main>
     <div class="main">

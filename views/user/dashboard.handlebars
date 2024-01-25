@@ -1,0 +1,11 @@
+<h2>Open Job Listings</h2>
+<div>
+    {{#each jobs as |job|}}
+    <div>
+        <p>{{job.job_title}}</p>
+        <p>{{job.description_text}}</p>
+        <p>{{job.requirements_text}}</p>
+    </div>
+    <br>
+    {{/each}}
+</div>
