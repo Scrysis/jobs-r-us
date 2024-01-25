@@ -11,6 +11,13 @@ Job.init(
             primaryKey: true,
             autoIncrement:true
         },
+        job_title: {
+                type: Datatypes.STRING,
+                allowNull: false,
+                validate: {
+                    len: [1]
+                }
+        },
         requirements_text: {
             type: Datatypes.STRING,
             allowNull: false,
@@ -18,6 +25,14 @@ Job.init(
         description_text: {
             type: Datatypes.STRING,
             allowNull: false,
+        },
+        salary: {
+            type: Datatypes.INTEGER,
+            allowNull: true,
+            validate: {
+                isNumeric: true,
+                min: 0
+            }
         },
         user_id: {
             type: Datatypes.INTEGER,
