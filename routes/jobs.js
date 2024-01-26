@@ -8,7 +8,7 @@ const sequelize = new Sequelize('job', 'username', 'password', {
   dialect: 'mysql'
 });
 
-// GET /api/jobs - Retrieve all jobs
+//Retrieve all jobs
 router.get('/jobs', async (req, res) => {
   try {
     const jobs = await sequelize.model('Job').findAll({});
@@ -19,7 +19,7 @@ router.get('/jobs', async (req, res) => {
   }
 });
 
-// GET /api/jobs/:id - Retrieve a single job by ID
+//Retrieve a single job by ID
 router.get('/jobs/:id', async (req, res) => {
   try {
     const job = await sequelize.model('Job').findById(req.params.id);
@@ -35,7 +35,7 @@ router.get('/jobs/:id', async (req, res) => {
 });
 
 
-// POST /api/jobs - Create a new job
+//Create a new job
 router.post('/jobs', async (req, res) => {
   try {
     const job = await sequelize.model('Job').create(req.body);
@@ -47,7 +47,7 @@ router.post('/jobs', async (req, res) => {
  
 });
 
-// PUT /api/jobs/:id - Update a job
+//Update a job
 router.put('/jobs/:id', async (req, res) => {
   try {
     const job = await sequelize.model('Job').findById(req.params.id);
@@ -63,7 +63,7 @@ router.put('/jobs/:id', async (req, res) => {
   }
 });
 
-// DELETE /api/jobs/:id - Delete a job
+//Delete a job
 router.delete('/jobs/:id', async (req, res) => {
   try {
     await sequelize.model('Job').destroy({ where: { id: req.params.id } });
