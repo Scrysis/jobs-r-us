@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
-// const {matchSorter} = require('match-sorter');   // import for the match-sorter package
+const {matchSorter} = require('match-sorter');   // import for the match-sorter package
 
 const sequelize = new Sequelize('job', 'username', 'password', {
   host: 'localhost',
@@ -71,6 +71,17 @@ router.delete('/jobs/:id', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error deleting job' });
+  }
+});
+
+router.get(`/jobs/:${search_term}`, async (req, res) => {
+  try {
+    const jobs = await sequelize.model('Job').findAll();
+    const results = matchSorter(jobs, search_term);
+    res.status(200).json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({message: 'Error'});
   }
 });
 
