@@ -13,7 +13,7 @@ const jobData = [
         job_title: "Entry Level Programmer",
         requirements_text:"A Master's degree in computer science from an Ivy League School and 20 years of related experience.",
         description_text:"We are looking for rock stars for our start up tech company. Must be willing to work weekends/overtime.",
-        salary: 20000,
+        salary: null,
         user_id: 3,
 
     },
@@ -21,7 +21,7 @@ const jobData = [
         job_title: "Firefighter",
         requirements_text:"Need to be physically fit and able to be calm in the face of danger.",
         description_text:"You will be an asset to the community and a local hero.",
-        salary: null,
+        salary: 80000,
         user_id: 1,
 
     },
