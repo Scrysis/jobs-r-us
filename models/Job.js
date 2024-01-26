@@ -1,4 +1,4 @@
-const {Model, Datatypes } = require('sequelize');
+const {Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Job extends Model {}
@@ -6,28 +6,28 @@ class Job extends Model {}
 Job.init(
     {
         id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement:true
         },
         job_title: {
-                type: Datatypes.STRING,
+                type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     len: [1]
                 }
         },
         requirements_text: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         description_text: {
-            type: Datatypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         salary: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: true,
             validate: {
                 isNumeric: true,
@@ -35,7 +35,7 @@ Job.init(
             }
         },
         user_id: {
-            type: Datatypes.INTEGER,
+            type: DataTypes.INTEGER,
             references:{
                 model: 'user',
                 key: 'id',
