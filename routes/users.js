@@ -42,4 +42,30 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Update a user
+router.put('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.json(user);
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating user', error: err });
+  }
+});
+
+// Delete a user
+router.delete('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    await User.findByIdAndRemove(id);
+    res.json({ message: 'User deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error deleting user', error: err });
+  }
+});
+
 module.exports = router;
