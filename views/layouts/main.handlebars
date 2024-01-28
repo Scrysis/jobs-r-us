@@ -16,7 +16,7 @@
                 <a href="/">Homepage</a>
             </li>
             
-                {{#if session.loggedIn}}
+                {{#if loggedIn}}
             <li>
                 <a href="/dashboard">Dashboard</a>
             </li>
@@ -38,7 +38,7 @@
     {{{body}}}
     </div>
 </main>
-    {{#if session.loggedIn}}
+    {{#if loggedIn}}
     <script src="/js/logout.js"></script>
     {{/if}}
 </body>

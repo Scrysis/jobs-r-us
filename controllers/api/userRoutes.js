@@ -102,7 +102,6 @@ router.post('/login', async (req, res) => {
         email: req.body.email,
       },
     });
-
     if (!dbUserData) {
       res
         .status(400)
@@ -110,7 +109,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res

@@ -10,7 +10,8 @@ const loginForm = async (event) => {
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
-
+        console.log(email, password)
+        console.log(response)
         if (response.ok) {
             document.location.replace('/');
         } else {
@@ -43,20 +44,20 @@ const signupForm = async (event) => {
         }
 };
 
-const logout = async () => {
-    const response = await fetch('/api/users/logout', {
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json'}, 
-    });
+// const logout = async () => {
+//     const response = await fetch('/api/users/logout', {
+//         method: 'POST', 
+//         headers: { 'Content-Type': 'application/json'}, 
+//     });
 
-    if (response.ok) {
-        document.location.replace('/login');
-    } else {
-        alert('Could not logout. Please try again later');
-    }
-};
+//     if (response.ok) {
+//         document.location.replace('/login');
+//     } else {
+//         alert('Could not logout. Please try again later');
+//     }
+// };
 
-document.querySelector('logout').addEventListener('click', logout);
+// document.querySelector('logout').addEventListener('click', logout);
 
 document
     .querySelector('#loginForm')

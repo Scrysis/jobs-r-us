@@ -13,7 +13,9 @@ const withAuth = require('../utils/auth');
 //brings user to homepage
 router.get('/', (req, res) => {
     try {
-        res.render('homepage');
+        res.render('homepage', {
+            loggedIn: req.session.loggedIn,
+        });
     } catch (err) {
         console.error('Error rendering homepage:', err);
         res.status(500).json({ error: 'Internal Server Error' });
