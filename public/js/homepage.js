@@ -5,7 +5,7 @@ const applyButton = document.getElementById('homepageApplyBtn');
 
 applyButton.addEventListener('click', () => {
     // Check if the user is logged in
-    fetch('/api/users/check-auth')  // Replace with the actual endpoint to check authentication
+    fetch('/api/users/')
         .then(response => {
             if (response.ok) {
                 // User is logged in, redirect to the dashboard
@@ -21,3 +21,5 @@ applyButton.addEventListener('click', () => {
 });
 
 //create post function
+
+const postButton = document.getElementById('homepagePostBtn')

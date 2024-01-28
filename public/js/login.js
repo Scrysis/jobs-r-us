@@ -1,6 +1,6 @@
 const loginForm = async (event) => {
     event.preventDefault();
-    console.log('Login form submitted');
+
     const email = document.querySelector('#emailLogin').value.trim();
     const password = document.querySelector('#passwordLogin').value.trim();
 
@@ -42,6 +42,21 @@ const signupForm = async (event) => {
         }
         }
 };
+
+const logout = async () => {
+    const response = await fetch('/api/users/logout', {
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json'}, 
+    });
+
+    if (response.ok) {
+        document.location.replace('/login');
+    } else {
+        alert('Could not logout. Please try again later');
+    }
+};
+
+document.querySelector('logout').addEventListener('click', logout);
 
 document
     .querySelector('#loginForm')

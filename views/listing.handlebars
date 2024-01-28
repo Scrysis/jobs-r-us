@@ -1,0 +1,32 @@
+<h1>{{job.job_title}}</h1>
+
+<button class="btn applyBtn">Apply</button>
+
+<section>
+    <h2>Job Details</h2>
+    <p><strong>Job Title:</strong> {{ job.job_title }}</p>
+    <p><strong>Salary:</strong> {{ job.salary }}</p>
+    <p><strong>Description:</strong> {{ job.description_text }}</p>
+    <p><strong>Requirements:</strong> {{ job.requirements_text }}</p>
+</section>
+
+<section>
+    <h2>Job Reviews</h2>
+    {{#if jobReviews}}
+        {{#each jobReviews.reviews as |review|}}
+            <section>
+                <h3>{{review.User.first_name}} {{review.User.last_name}}</h3>
+            </section>
+            <section>
+                <p>{{review.review_rating}}</p>
+            </section>
+            <section>
+                <p>{{review.review_text}}</p>
+            </section>
+        {{/each}}
+    {{else}}
+        <p>No reviews available for this job.</p>
+    {{/if}}
+</section>
+
+<script src="../public/js/apply.js"></script>

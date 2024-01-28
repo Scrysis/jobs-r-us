@@ -47,13 +47,13 @@ router.get('/login', (req, res) => {
     }
 });
 
-  //go to user profile
+  //fetches logged in user data alongside posted jobs, reviews made, and applications made and sends to user profile page
   router.get('/profile', async (req, res) => {
     try {
         //fetch user data based on the logged-in user
         const userData = await User.findByPk(req.session.user_id, {
-            //includes applied jobs and posted reviews
-            include: [{ model: Job, as: 'job_entry' }, { model: Review }],
+            //includes posted jobs, applied jobs, and posted reviews
+            include: [{ model: Job, as: 'job_entry' }, { model: Review }, {model: Application}],
         });
 
         res.render('profile', {
