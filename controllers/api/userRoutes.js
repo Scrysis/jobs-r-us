@@ -67,7 +67,7 @@ router.put('/:id', async (req, res) => {
   try {
     const id = req.params.id
     const user = await User.update(req.body, {
-      where: {id},
+      where: { id: id},
       returning: true,
     });
     if (!user) {
@@ -85,7 +85,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id;
     await User.destroy({
-      where: { id },
+      where: { id: id },
     });
     res.json({ message: 'User deleted successfully' });
   } catch (err) {
