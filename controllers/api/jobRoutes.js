@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
 //Get a single job by ID
 router.get("/:id", async (req, res) => {
   try {
-    const jobData = await Job.findByk(req.params.id, {
+    const jobData = await Job.findByPk(req.params.id, {
       include: [{ model: Review, include: User }],
     });
 
