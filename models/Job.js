@@ -21,18 +21,20 @@ Job.init(
         requirements_text: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                len: [1]
+              }
         },
         description_text: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                len: [1]
+              }
         },
         salary: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-                isNumeric: true,
-                min: 0
-            }
         },
         user_id: {
             type: DataTypes.INTEGER,
