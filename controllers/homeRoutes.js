@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 //fetches job data brings user to dashboard
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const dbJobData = await Job.findAll();
         const jobs = dbJobData.map((job) =>
