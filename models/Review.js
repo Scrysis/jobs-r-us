@@ -20,7 +20,7 @@ Review.init(
       allowNull: false,
       validate: {
         min: 1,
-        max: 10
+        max: 5
       }
     },
     user_id: {

@@ -66,6 +66,8 @@ input[type=text] {
 }
 #applicationExperience {
     padding: 200px;
+    height: 200px;
+    width: 400px;
 }
 
 #ratingText {
