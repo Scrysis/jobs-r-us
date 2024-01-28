@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
+    <title>Jobs R Us</title>
     <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
     <header>
         <h1>Welcome to Jobs R Us!</h1>
     </header>
-    <nav>
+    <nav class="navbar">
         <ul>
             <li>
                 <a href="/">Homepage</a>
             </li>
             
-                {{#if loggedIn}}
+                {{#if session.loggedIn}}
             <li>
                 <a href="/dashboard">Dashboard</a>
             </li>
             <li>
-                <a href="/list">Post a Job</a>
+                <a href="/profile">Profile</a>
             </li>
             <li>
-                <button id="logout-btn" class="logout-btn">Logout</button>
+                <a href="/logout">Logout</a>
             </li>
                 {{else}}
             <li>
@@ -38,7 +38,7 @@
     {{{body}}}
     </div>
 </main>
-    {{#if loggedIn}}
+    {{#if session.loggedIn}}
     <script src="/js/logout.js"></script>
     {{/if}}
 </body>

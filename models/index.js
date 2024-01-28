@@ -4,40 +4,42 @@ const Review = require('./Review');
 const Application = require('./Application');
 
 Review.belongsTo(User, {
-    foreignKey: 'review_id',
+    foreignKey: 'user_id',
 });
 
 User.hasMany(Review, {
     foreignKey: 'user_id',
 });
 Job.hasMany(Review, {
-    foreignKey: 'review_id',
+    foreignKey: 'job_id',
 });
 
 Review.belongsTo(Job, {
-    foreignKey: 'job_Id',
+    foreignKey: 'job_id',
 });
+
 
 User.hasMany(Job, {
-    as: 'job',
-    foreignKey: 'job_Id',
+    foreignKey: 'user_id',
 });
 
+Job.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+
+
 User.belongsToMany(Job, {
-    through: {
-        model: Application,
-        unique: false,
-    },
+    through: Application,
+    foreignKey: 'applicant_id',
     as: 'job_entry',
 });
 
 Job.belongsToMany(User, {
-    through: {
-        model: Application,
-        unique: false,
-    },
+    through: Application,
+    foreignKey: 'job_id',
     as: 'job_applicant',
 });
+
 
 module.exports = {User, Job, Review, Application};
 

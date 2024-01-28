@@ -11,7 +11,7 @@ Application.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    job_Id: {
+    job_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'job',
@@ -21,8 +21,11 @@ Application.init(
     application_text: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
-    applicant_Id: {
+    applicant_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',

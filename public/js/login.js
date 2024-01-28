@@ -1,13 +1,13 @@
 const loginForm = async (event) => {
     event.preventDefault();
-
-    const username = document.querySelector('#useLogin').value.trim();
+    console.log('Login form submitted');
+    const email = document.querySelector('#emailLogin').value.trim();
     const password = document.querySelector('#passwordLogin').value.trim();
 
-    if (username && password) {
+    if (email && password) {
         const response = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -19,17 +19,19 @@ const loginForm = async (event) => {
     }
 };
 
+
 const signupForm = async (event) => {
     event.preventDefault();
-
-    const username = document.querySelector('#userSignup').value.trim();
+    console.log('Signup form submitted');
+    const first_name = document.querySelector('#signupFirstname').value.trim();
+    const last_name = document.querySelector('#signupLastname').value.trim();
     const email = document.querySelector('#emailSignup').value.trim();
     const password = document.querySelector('#passwordSignup').value.trim();
 
-    if (username && email && password) {
+    if (first_name && last_name && email && password) {
         const response = await fetch('/api/users', {
             method: 'POST',
-            body: JSON.stringify({ username, email, password }),
+            body: JSON.stringify({ first_name, last_name, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -38,20 +40,13 @@ const signupForm = async (event) => {
         } else {
             alert('Could not create account. Please try later')
         }
-
-        if (username) {
-            alert('Username is available')
-        } else {
-            alert('Username is taken. Please try a new one')
-         }
         }
 };
-// Add code for user already created/pick new username??
 
 document
-    .querySelector('.loginForm')
+    .querySelector('#loginForm')
     .addEventListener('submit', loginForm);
 
 document
-  .querySelector('.signupForm')
+  .querySelector('#signupForm')
   .addEventListener('submit', signupForm);
