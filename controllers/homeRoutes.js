@@ -13,9 +13,7 @@ const withAuth = require('../utils/auth');
 //brings user to homepage
 router.get('/', (req, res) => {
     try {
-        res.render('homepage', {
-            loggedIn: req.session.loggedIn,
-        });
+        res.render('homepage');
     } catch (err) {
         console.error('Error rendering homepage:', err);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -42,22 +40,20 @@ router.get('/dashboard', withAuth, async (req, res) => {
 //brings user to login/signup page
 router.get('/login', (req, res) => {
     try {
-        res.render('login',{
-            loggedIn: req.session.loggedIn,
-        });
+        res.render('login');
     } catch (err) {
         console.error('Error rendering login page:', err);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
-  //fetches logged in user data alongside posted jobs, reviews made, and applications made and sends to user profile page
+  //go to user profile
   router.get('/profile', async (req, res) => {
     try {
         //fetch user data based on the logged-in user
         const userData = await User.findByPk(req.session.user_id, {
-            //includes posted jobs, applied jobs, and posted reviews
-            include: [{ model: Job, as: 'job_entry' }, { model: Review }, {model: Application}],
+            //includes applied jobs and posted reviews
+            include: [{ model: Job, as: 'job_entry' }, { model: Review }],
         });
 
         res.render('profile', {

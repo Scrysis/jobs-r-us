@@ -102,6 +102,7 @@ router.post('/login', async (req, res) => {
         email: req.body.email,
       },
     });
+
     if (!dbUserData) {
       res
         .status(400)
@@ -109,7 +110,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = dbUserData.checkPassword(req.body.password);
+    const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -138,13 +139,13 @@ router.post('/login', async (req, res) => {
 // Logout
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
-    req.session.loggedIn = false
-    res.status(200).json({ message: 'Logout successful' });
-    } else {
-        res.status(400).json({ message: 'Not logged in' });
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
-  }
-);
+});
 
 //  Get users job listings
 

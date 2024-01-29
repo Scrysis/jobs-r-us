@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {Job, User, Application, Review} = require('../../models');
+const User = require('../models/user');
+const Job = require('../models/job');
 
 router.post('/:jobId', async (req, res) => {
   try {
 
     const jobId = req.params.jobId;
     const email = req.body.email;
-    const text = req.body.application_text;
+    const coverLetter = req.body.coverLetter;
 
     const job = await Job.findById(jobId);
 
@@ -23,7 +24,7 @@ router.post('/:jobId', async (req, res) => {
     }
 
     // Create a new application
-    const application = new Application(job, email, text);
+    const application = new User.application(job, email, coverLetter);
 
     // Save the application
     await application.save();

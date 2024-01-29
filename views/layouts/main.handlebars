@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobs R Us</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
     <header>
-        <h1>Jobs R Us</h1>
+        <h1>Welcome to Jobs R Us!</h1>
     </header>
     <nav class="navbar">
         <ul>
@@ -16,7 +16,7 @@
                 <a href="/">Homepage</a>
             </li>
             
-                {{#if loggedIn}}
+                {{#if session.loggedIn}}
             <li>
                 <a href="/dashboard">Dashboard</a>
             </li>
@@ -24,7 +24,7 @@
                 <a href="/profile">Profile</a>
             </li>
             <li>
-                <a id="logout">Logout</a>
+                <a href="/logout">Logout</a>
             </li>
                 {{else}}
             <li>
@@ -38,9 +38,9 @@
     {{{body}}}
     </div>
 </main>
-{{#if loggedIn}}
-<script src="/js/logout.js"></script>
-{{/if}}
+    {{#if session.loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>

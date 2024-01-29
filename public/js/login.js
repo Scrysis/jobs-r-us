@@ -1,6 +1,6 @@
 const loginForm = async (event) => {
     event.preventDefault();
-
+    console.log('Login form submitted');
     const email = document.querySelector('#emailLogin').value.trim();
     const password = document.querySelector('#passwordLogin').value.trim();
 
@@ -10,8 +10,7 @@ const loginForm = async (event) => {
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
-        console.log(email, password)
-        console.log(response)
+
         if (response.ok) {
             document.location.replace('/');
         } else {
@@ -44,14 +43,10 @@ const signupForm = async (event) => {
         }
 };
 
-
 document
     .querySelector('#loginForm')
     .addEventListener('submit', loginBtn);
 
 document
   .querySelector('#signupForm')
-
-  .addEventListener('submit', signupForm);
-
-
+  .addEventListener('submit', signupBtn);

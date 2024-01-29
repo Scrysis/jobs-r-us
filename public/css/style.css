@@ -18,15 +18,15 @@ body {
     flex-direction: column;
     min-height: auto;
     justify-content: flex-start;
-    background-color: lightslategray;
+    background-color: var(--color08);
 }
 
 header {
     padding: 40px;
-    text-align: center;
+    text-align: left;
     background: var(--color02);
-    color: var(--color09);
-
+    color: var(--color04);
+    border-bottom-style: solid;
 }
 
 main {
@@ -35,33 +35,16 @@ main {
     flex-grow: 1;
 }
 
-ul {
-    display: flex;
-    list-style: none;
-    margin: 20px 0px;
-}
-
-li {
-    margin: 0px 20px;
-    color:  var(--color09);
-}
-
-h2 {
-    text-align: center;
-    justify-content: center;
-}
-
 nav {
-    justify-content: end;
     display: flex;
     color: var(--color05);
-    background-color: var(--color08);
+    background-color: var(--color07);
 }
 
 button {
     background-color: var(--color01);
     color: var(--color03);
-    border-radius: 5%;
+    border-radius: 30%;
 }
 
 button:hover {
