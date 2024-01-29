@@ -18,4 +18,14 @@ document
 
 //create post function
 
-const postButton = document.getElementById('homepagePostBtn')
+const postButton = (req, res) => {
+     if(req.session.loggedIn) {
+            document.location.replace('/api/jobs/create');
+    }  else if (!req.session.loggedIn) {
+            document.location.replace('/login')
+    }
+};
+
+document
+    .querySelector('#homepagePostBtn')
+    .addEventListener('click', postButton);
