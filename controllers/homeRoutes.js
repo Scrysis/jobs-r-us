@@ -42,7 +42,9 @@ router.get('/dashboard', async (req, res) => {
 //brings user to login/signup page
 router.get('/login', (req, res) => {
     try {
-        res.render('login');
+        res.render('login',{
+            loggedIn: req.session.loggedIn,
+        });
     } catch (err) {
         console.error('Error rendering login page:', err);
         res.status(500).json({ error: 'Internal Server Error' });

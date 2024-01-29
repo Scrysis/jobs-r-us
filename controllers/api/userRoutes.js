@@ -138,13 +138,13 @@ router.post('/login', async (req, res) => {
 // Logout
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
+    req.session.loggedIn = false
+    res.status(200).json({ message: 'Logout successful' });
+    } else {
+        res.status(400).json({ message: 'Not logged in' });
   }
-});
+  }
+);
 
 //  Get users job listings
 

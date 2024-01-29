@@ -36,12 +36,15 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const jobData = await Job.findByPk(req.params.id, {
-      include: [{ model: Review, include: User }],
+      include: {
+        
+      }
     });
-    
+    console.log(jobData)
+    console.log(reviewData)
     res.render("listing", {
       job: jobData.get({ plain: true }),
-      jobReviews: jobData.Reviews,
+      jobReviews: reviewData.get({plain: true}),
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -52,16 +55,11 @@ router.get("/:id", async (req, res) => {
 
 //Get job creation page
 router.get('/create', (req, res) => {
-  try {
-    res.render('create', { loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.error('Error rendering job creation page:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+    res.render('create');
 });
 
 //Create a new job
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
   try {
     const dbJobData = await Job.create({
       job_title: req.body.job_title,
