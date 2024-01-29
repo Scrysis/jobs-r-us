@@ -9,7 +9,7 @@
     <button class="btn" id="homepageApplyBtn">Apply</button>
     <button class="btn" id="homepagePostBtn">Post</button>
 </div>
-{{#unless session.loggedIn}}
+{{#unless loggedIn}}
 <div>
     <p>Not a member yet? Sign up below.</p>
     <a href="/login">Signup</a>

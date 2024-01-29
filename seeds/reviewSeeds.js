@@ -11,13 +11,13 @@ const reviewData = [
         review_text: "Not terrible not great.",
         review_rating: 2,
         user_id: 3,
-        job_id: 2
+        job_id: 5
     },
     {
         review_text: "Decent.",
         review_rating: 3,
         user_id: 2,
-        job_id: 2
+        job_id: 4
     },
     {
         review_text: "Couldn't be happier!",
@@ -29,7 +29,7 @@ const reviewData = [
         review_text: "Just Awful",
         review_rating: 1,
         user_id: 5,
-        job_id: 4
+        job_id: 2
     }
 ]
 
