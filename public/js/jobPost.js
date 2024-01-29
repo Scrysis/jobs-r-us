@@ -1,12 +1,12 @@
 
-const form = document.querySelector('#job-form');
+const form = document.querySelector('#postJob-form');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   // Get the job title and description from the form fields
-  const title = document.querySelector('#job-title').value;
-  const description = document.querySelector('#job-description').value;
+  const title = document.querySelector('#jobTitleInput').value;
+  const description = document.querySelector('#jobDescriptionInput').value;
 
   // Create a new job posting object
   const job = {
@@ -16,8 +16,8 @@ form.addEventListener('submit', (e) => {
   createJob(job);
 
   // Clear the form fields
-  document.querySelector('#job-title').value = '';
-  document.querySelector('#job-description').value = '';
+  document.querySelector('#jobTitleInput').value = '';
+  document.querySelector('#jobDescriptionInput').value = '';
 });
 
 // Create a function to create a new job posting
