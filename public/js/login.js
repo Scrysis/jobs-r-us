@@ -24,8 +24,8 @@ const loginForm = async (event) => {
 const signupForm = async (event) => {
     event.preventDefault();
     console.log('Signup form submitted');
-    const first_name = document.querySelector('#signupFirstname').value.trim();
-    const last_name = document.querySelector('#signupLastname').value.trim();
+    const first_name = document.querySelector('#firstnameSignup').value.trim();
+    const last_name = document.querySelector('#lastnameSignup').value.trim();
     const email = document.querySelector('#emailSignup').value.trim();
     const password = document.querySelector('#passwordSignup').value.trim();
 
