@@ -23,4 +23,5 @@ const jobList = async (event) => {
 };
 
 document
-    .addEventListener('submit', findJobBtn);
+    .querySelector('#search')
+    .addEventListener('click', jobList);
