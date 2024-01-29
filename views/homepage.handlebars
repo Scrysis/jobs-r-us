@@ -5,15 +5,20 @@
     <p>Jobs R Us can match you with your perfect Employer or Employee.</p>
     <p>Get started by either applying to a position or posting a new job listing below.</p>
 </div>
+{{#if loggedIn}}
 <div id="homepageBtns">
-    <button class="btn" id="homepageApplyBtn">Apply</button>
-    <button class="btn" id="homepagePostBtn">Post</button>
+    <a href="/dashboard"><button class="btn" id="homepageApplyBtn">Apply</button></a>
+    <a href="/api/jobs/create"><button class="btn" id="homepagePostBtn">Post</button></a>
 </div>
+{{else}}
+<div id="homepageBtns">
+    <a href="/login"><button class="btn" id="homepageApplyBtn">Apply</button></a>
+    <a href="/login"><button class="btn" id="homepagePostBtn">Post</button></a>
+</div>
+{{/if}}
 {{#unless loggedIn}}
 <div>
     <p>Not a member yet? Sign up below.</p>
     <a href="/login">Signup</a>
 </div>
 {{/unless}}
-
-<script src="./js/homepage.js"></script>

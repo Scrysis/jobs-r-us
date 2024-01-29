@@ -3,7 +3,7 @@
     {{#each jobs as |job|}}
 <div class="jobPost">
     <div class="jobTitle">
-        <h3>{{job.job_title}}</h3>
+       <a href="/api/jobs/{{job.id}}"><h3>{{job.job_title}}</h3></a>
     </div>
     <div class="jobSalary">
         <p>Salary: {{job.salary}}</p>
@@ -14,10 +14,10 @@
     <div class="jobRequirements">
         <p>Requirements: {{job.requirements_text}}</p>
     </div>
-    <button class="btn applyBtn">Apply</button>
+    <a href="/api/jobs/{{job.id}}/application"><button class="btn applyBtn">Apply</button></a>
     <br>
 </div>
     {{/each}}
 </div>
 
-<script src="../public/js/apply.js"></script>
+<script src="/js/apply.js"></script>
