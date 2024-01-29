@@ -5,13 +5,12 @@ const { Application, Job, Review, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 const { matchSorter } = require("match-sorter"); // import for the match-sorter package
 
-
-
 // Routes needed:
 //  Get all jobs
 //  Get one job by id
 //  Get Job Creation page
 //  Create a new job
+//  Get edit job page
 //  Update a job
 //  Delete a job
 //  Get jobs applicants
@@ -37,11 +36,15 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const jobData = await Job.findByPk(req.params.id, {
-      include: [{ model: Review, include: User }],
-    });
 
+      include: [{ model: Review, include: User }],
+
+    });
+    console.log(jobData)
+    console.log(reviewData)
     res.render("listing", {
       job: jobData.get({ plain: true }),
+      jobReviews: reviewData.get({plain: true}),
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -50,17 +53,13 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//Get job creation page
 router.get('/create', (req, res) => {
-  try {
-    res.render('create', { loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.error('Error rendering job creation page:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+    res.render('create');
 });
 
 //Create a new job
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
   try {
     const dbJobData = await Job.create({
       job_title: req.body.job_title,
@@ -74,6 +73,22 @@ router.post('/', async (req, res) => {
   }
 
 });
+
+// Get job update page
+
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const job = await Job.findByPk(id);
+    res.render("edit", {
+      job: jobData.get({ plain: true }),
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.error("Error rendering job edit page:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+})
 
 //Update a job
 router.put('/:id', async (req, res) => {
@@ -193,7 +208,7 @@ router.get('/:id/reviews/create', async (req, res) => {
 });
 
 // Create review for a job
-router.post('/:id/reviews', async (req, res) => {
+router.post('/:id/reviews/create', async (req, res) => {
   try {
     const jobId = req.params.id;
     const { review_text } = req.body;
