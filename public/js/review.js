@@ -1,19 +1,30 @@
+const oneStar = ['1']
+const twoStar = ['2']
+const threeStar = ['3']
+const fourStar = ['4']
+const fiveStar = ['5']
+
+
+
 var createRating = () => {
     const radio = document.querySelector('.radio');
     radio.addEventListener('click', () => {
-    });
-    
+    })
+    if(oneStar.checked) {
+        console.log('one')
+    }
+    if(twoStar.checked) {
+        console.log('two')
+    }
+    if(threeStar.checked) {
+        console.log('three')
+    }
+    if(fourStar.checked) {
+        console.log('four')
+    }
+    if(fiveStar.checked) {
+        console.log('five')
+    }
 };
 
 
-// // // Function to create a radio element and append to parent element 
-// function createRadio(name, parentElem, checked = false) { 
-//     const elem = document.createElement('input'); 
-//     elem.type = 'radio'; 
-//     elem.name = name; 
-//     elem.checked = checked; 
-//     parentElem.appendChild(elem); 
-//   } 
-   
-//   // Example call that adds new radio to the body 
-//   createRadio('test', document.body, true);
