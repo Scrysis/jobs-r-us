@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const user = await User.findById(id);
+    const user = await User.findByPk(id);
     if (!user) {
       res.status(404).json({ message: 'User not found' });
     } else {
@@ -67,7 +67,7 @@ router.put('/:id', async (req, res) => {
   try {
     const id = req.params.id
     const user = await User.update(req.body, {
-      where: {id},
+      where: { id: id},
       returning: true,
     });
     if (!user) {
@@ -85,7 +85,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id;
     await User.destroy({
-      where: { id },
+      where: { id: id },
     });
     res.json({ message: 'User deleted successfully' });
   } catch (err) {
@@ -102,7 +102,6 @@ router.post('/login', async (req, res) => {
         email: req.body.email,
       },
     });
-
     if (!dbUserData) {
       res
         .status(400)
@@ -110,7 +109,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -139,13 +138,13 @@ router.post('/login', async (req, res) => {
 // Logout
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
+    req.session.loggedIn = false
+    res.status(200).json({ message: 'Logout successful' });
+    } else {
+        res.status(400).json({ message: 'Not logged in' });
   }
-});
+  }
+);
 
 //  Get users job listings
 
