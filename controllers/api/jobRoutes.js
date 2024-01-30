@@ -213,12 +213,10 @@ router.post('/:id/reviews/create', async (req, res) => {
   try {
 
     const reviewData = await Review.create({
-
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
+      user_id: req.session.user_id,
       review_rating: req.body.review_rating,
       review_text: req.body.review_text,
-      
+      job_id: req.body.job_id
     });
 
     res.status(200).json(reviewData);
