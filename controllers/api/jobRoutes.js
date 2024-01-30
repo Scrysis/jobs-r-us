@@ -178,14 +178,11 @@ router.get("/:id/application", async (req, res) => {
 // Create application for job
 router.post('/:id/application', async (req, res) => {
   try {
-    const jobId = req.params.id;
-    const { application_text } = req.body;
-    const applicantId = req.session.userId;
-
     const applicationData = await Application.create({
-      job_id: jobId,
-      application_text: application_text,
-      applicant_id: applicantId,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      application_text: req.body.application_text,
     });
 
     res.status(200).json(applicationData);
@@ -214,14 +211,14 @@ router.get('/:id/reviews/create', async (req, res) => {
 // Create review for a job
 router.post('/:id/reviews/create', async (req, res) => {
   try {
-    const jobId = req.params.id;
-    const { review_text } = req.body;
-    const reviewerId = req.session.userId;
 
     const reviewData = await Review.create({
-      job_id: jobId,
-      review_text: review_text,
-      user_id: reviewerId,
+
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      review_rating: req.body.review_rating,
+      review_text: req.body.review_text,
+      
     });
 
     res.status(200).json(reviewData);

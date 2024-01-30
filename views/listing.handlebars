@@ -1,6 +1,6 @@
 <h1>{{job.job_title}}</h1>
 
-<a href="/api/jobs/{{job.id}}/application"><button class="btn applyBtn">Apply</button></a>
+<a href="/api/jobs/{{job.id}}/application"><button class="btn" id="">Apply</button></a>
 
 <section>
     <h2>Job Details</h2>
@@ -12,6 +12,7 @@
 
 <section>
     <h2>Job Reviews</h2>
+    <a href="/api/jobs/{{job.id}}/reviews/create"><button class="btn" id="createReviewBtn">Create a Review</button></a>
     {{#if job}}
         {{#each job.reviews as |review|}}
             <section>
@@ -28,5 +29,3 @@
         <p>No reviews available for this job.</p>
     {{/if}}
 </section>
-
-<script src="../public/js/apply.js"></script>
