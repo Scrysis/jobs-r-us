@@ -49,10 +49,12 @@ router.post('/', async (req, res) => {
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password,
+      
     });
-
+    
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUserData.get({plain: true}).id;
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -117,9 +119,11 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
-
+    console.log(dbUserData);
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUserData.get({plain: true}).id;
+
       console.log(
         'File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
         req.session.cookie
