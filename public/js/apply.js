@@ -25,4 +25,4 @@ const applyJob = async (event) => {
 
 document
   .querySelector('#application-form')
-  .addEventListener('submit', applyJob);
+  .addEventListener('submit', applyJob);my
