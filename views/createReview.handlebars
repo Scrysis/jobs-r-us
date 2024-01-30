@@ -1,24 +1,23 @@
 <h1>Write Your Review</h1>
 
 <div>
-    <form id="userReview">
+    <form id="reviewForm">
+        <section>
+          <h4>First Name:</h4>
+          <input type="text" id="firstName">
+        <section>
+          <h4>Last Name:</h4>
+          <input type="text" id="lastName">
         <section class="formArea" id="ratingScale">
-          <h4>Please select your rating</h4>
-          <input type="radio" id="oneStar" value="oneStar">
-          <label for="oneStar">1 star</label><br>
-          <input type="radio" id="twoStar" value="twoStar">
-          <label for="twoStar">2 stars</label><br>
-          <input type="radio" id="threeStar" value="threeStar">
-          <label for="threeStar">3 stars</label><br>
-          <input type="radio" id="fourStar" value="fourStar">
-          <label for="fourStar">4 stars</label><br>
-          <input type="radio" id="fiveStar" value="fiveStar">
-          <label for="fiveStar">5 stars</label>
+          <h4>Out of 5, please give your rating</h4>
+          <input type="text" id="reviewRating">
         </section>
-        <section class="formArea" id="ratingText">
-            <label for="ratingText">Tell us about your time here</label>
-            <input class="formInput" type="text" id="ratingText" placeholder="Write your review here">
+        <section class="formArea">
+            <label for="reviewText">Tell us about your time here</label>
+            <input class="formInput" type="text" id="reviewText" placeholder="Write your review here">
         </section>
         <button class="btn" id="userBtn">Submit Review</button>
     </form>
 </div>
+
+<script src="/js/review.js"></script>
