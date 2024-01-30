@@ -47,6 +47,7 @@ router.get("/:id", async (req, res) => {
           include: [User]
         }
       ]
+
     });
     const job = jobData.get({plain: true})
     console.log(job.reviews)
