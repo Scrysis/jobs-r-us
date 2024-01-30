@@ -1,28 +1,46 @@
 
-const postJob = async (event) => {
-    event.preventDefault();
+const form = document.querySelector('#postJob-form');
 
-    const job_title = document.querySelector('#jobTitleInput').value
-    const salary = document.querySelector('#jobSalaryInput').value
-    const description_text = document.querySelector('#jobDescriptionInput').value
-    const requirements_text = document.querySelector('#jobRequirementsInput').value
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-    if(job_title && salary && description_text && requirements_text) {
-        const response = await fetch('/api/jobs/create', {
-            method: 'POST',
-            body: JSON.stringify({job_title, salary, description_text, requirements_text}),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        if(response.ok) {
-            alert('Created!')
-            document.location.replace('/dashboard')
-        } else {
-            alert('Could not submit. Please try again');
-        }
-    } 
-};
+  // Get the job title and description from the form fields
+  const title = document.querySelector('#jobTitleInput').value;
+  const description = document.querySelector('#jobDescriptionInput').value;
 
+  // Create a new job posting object
+  const job = {
+    title,
+    description,
+  };
+  createJob(job);
 
-document
-    .querySelector('#postJob-form')
-    .addEventListener('submit', postJob);
+  // Clear the form fields
+  document.querySelector('#jobTitleInput').value = '';
+  document.querySelector('#jobDescriptionInput').value = '';
+});
+
+// Create a function to create a new job posting
+function createJob(job) {
+  fetch('/api/jobs', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(job),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // If the job posting was created successfully, redirect to the job details page
+      if (data.success) {
+        window.location.href = `/jobs/${data.id}`;
+      } else {
+        // If there was an error, display an error message
+        alert(data.message);
+      }
+    })
+    .catch((error) => {
+      // If there was an error, display an error message
+      alert(error.message);
+    });
+}

@@ -1,28 +1,50 @@
+const oneStar = ['1']
+const twoStar = ['2']
+const threeStar = ['3']
+const fourStar = ['4']
+const fiveStar = ['5']
+const radio = document.querySelector('.radio');
 
-const postReview = async (event) => {
-    event.preventDefault();
 
-    const first_name = document.querySelector('#firstName').value
-    const last_name = document.querySelector('#lastName').value
-    const review_rating = document.querySelector('#reviewRating').value
-    const review_text = document.querySelector('#reviewText').value
-
-    if(first_name && last_name && review_rating && review_text) {
-        const response = await fetch('/api/jobs/:id/reviews/create', {
-            method: 'POST',
-            body: JSON.stringify({first_name, last_name, review_rating, review_text}),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        if(response.ok) {
-            alert('Created!')
-            document.location.replace('/api/jobs/:id')
-        } else {
-            alert('Could not submit. Please try again');
-        }
-    } 
+var createRating = () => {
+    radio.addEventListener('click', () => {
+    })
+    if(oneStar.checked) {
+        console.log('one')
+    }
+    if(twoStar.checked) {
+        console.log('two')
+    }
+    if(threeStar.checked) {
+        console.log('three')
+    }
+    if(fourStar.checked) {
+        console.log('four')
+    }
+    if(fiveStar.checked) {
+        console.log('five')
+    }
 };
 
+createRating();
 
-document
-    .querySelector('#reviewForm')
-    .addEventListener('submit', postReview);
+var postRating = () => {
+    radio.addEventListener('click', () => {
+        if(oneStar.checked) {
+            console.log(this.value)
+        }
+        if(twoStar.checked) {
+            console.log(this.value)
+        }
+        if(threeStar.checked) {
+            console.log(this.value)
+        }
+        if(fourStar.checked) {
+            console.log(this.value)
+        }
+        if(fiveStar.checked) {
+            console.log(this.value)
+        }
+    })
+};
+postRating();
