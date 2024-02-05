@@ -1,7 +1,7 @@
 <h2>Open Job Listings</h2>
 <div class="dashboard">
     {{#each jobs as |job|}}
-<div class="jobPost">
+<div class="jobPost card">
     <div class="jobTitle">
        <a href="/api/jobs/{{job.id}}"><h3>{{job.job_title}}</h3></a>
     </div>

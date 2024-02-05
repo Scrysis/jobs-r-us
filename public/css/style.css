@@ -33,6 +33,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
+    align-items: center;
+    justify-content: center;
 }
 
 ul {
@@ -61,7 +63,7 @@ nav {
 button {
     background-color: var(--color01);
     color: var(--color03);
-    border-radius: 5%;
+    
 }
 
 button:hover {
@@ -76,10 +78,28 @@ input[type=text] {
     border-color: var(--color02);
 
 }
-
+/* https://getcssscan.com/css-buttons-examples */
 .btn {
-    width: 100px;
-    font-size: large;
+    background-image: linear-gradient(#0dccea, #0d70ea);
+    border: 0;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: Montserrat,sans-serif;
+    font-size: .9em;
+    margin: 5px;
+    padding: 10px 15px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.btn:hover{
+    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
 }
 #applicationExperience {
     padding: 0px;
@@ -90,10 +110,22 @@ input[type=text] {
 #ratingText {
     padding: 200px;
 }
+.card {
+    align-items: center;
+    justify-content: center;
+    box-shadow: #242425;
+    border-radius: 350px;
+}
 .container {
     display: flex;
     flex-flow: column wrap;
     align-content: flex-start;
     align-items: center;
   }
+
+  @media (min-width: 768px) {
+    .btn {
+      padding: 16px 48px;
+    }
+}
   

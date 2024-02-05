@@ -2,7 +2,7 @@
 
 <a href="/api/jobs/{{job.id}}/application"><button class="btn" id="">Apply</button></a>
 
-<section>
+<section class="card">
     <h2>Job Details</h2>
     <p><strong>Job Title:</strong> {{ job.job_title }}</p>
     <p><strong>Salary:</strong> {{ job.salary }}</p>
@@ -10,7 +10,7 @@
     <p><strong>Requirements:</strong> {{ job.requirements_text }}</p>
 </section>
 
-<section>
+<section class="card">
     <h2>Job Reviews</h2>
     <a href="/api/jobs/{{job.id}}/reviews/create"><button class="btn" id="createReviewBtn">Create a Review</button></a>
     {{#if job}}
