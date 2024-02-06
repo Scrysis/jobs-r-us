@@ -22,6 +22,22 @@ const jobList = async (event) => {
 
 };
 
+/* router.get('/dashboard', withAuth, async (req, res) => {
+    try {
+        const dbJobData = await Job.findAll();
+        const jobs = dbJobData.map((job) =>
+            job.get({ plain: true })
+        );
+        res.render('dashboard', {
+            jobs,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        console.error('Error rendering dashboard:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}); */
+
 document
     .querySelector('#search')
-    .addEventListener('click', jobList);
+    .addEventListener('submit', jobList);

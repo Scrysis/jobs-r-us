@@ -1,12 +1,12 @@
 :root {
     --color01: #1c8fac;
-    --color02: #06425a;
+    --color02: #06729c;
     --color03: #a1f1fc;
     --color04: #000000;
     --color05: #bcd7db;
     --color06: #11f7ff;
     --color07: #136297;
-    --color08: #456b81;
+    --color08: #51ace0;
     --color09: #ffffff;  
     --border-radius: 0.4rem;
 }
@@ -18,7 +18,7 @@ body {
     flex-direction: column;
     min-height: auto;
     justify-content: flex-start;
-    background-color: lightslategray;
+    background-color: rgb(78, 143, 207);
 }
 
 header {
@@ -58,7 +58,9 @@ nav {
     display: flex;
     color: var(--color05);
     background-color: var(--color08);
+    
 }
+
 
 button {
     background-color: var(--color01);
@@ -77,6 +79,9 @@ input[type=text] {
     border-width: 2px;
     border-color: var(--color02);
 
+}
+#searchfield{
+    width: 200px;
 }
 /* https://getcssscan.com/css-buttons-examples */
 .btn {
@@ -111,16 +116,38 @@ input[type=text] {
     padding: 200px;
 }
 .card {
+    width: 750px;
+    height: 450px;
     align-items: center;
     justify-content: center;
-    box-shadow: #242425;
-    border-radius: 350px;
+    text-align: center ;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border-radius: 10%;
+    border-width: 0.5em;
+    border-color: var(--color07);
+    background:linear-gradient(#0d70ea, #a1f1fc, #ffffff);
 }
 .container {
     display: flex;
     flex-flow: column wrap;
     align-content: flex-start;
     align-items: center;
+  }
+
+  #firstnameSignup{
+    width: 250px;
+  }
+  #lastnameSignup{
+    width: 250px;
+  }
+  #emailSignup{
+    width: 250px;
+  }
+  #passwordSignup{
+    width: 250px;
+  }
+  #emailLogin{
+    width: 250px;
   }
 
   @media (min-width: 768px) {
