@@ -1,26 +1,25 @@
-const express = require('express');
-const router = express.Router();
-const {Job, User, Application, Review} = require('../../models');
-const {matchSorter} = require('match-sorter');
 
-const jobList = async (event) => {
+const searchButton = document.getElementById("search");
+
+/* const jobList = async (event) => {
     event.preventDefault();
     const searchTerm = document.querySelector('#searchfield').value.trim();
 
     if(searchTerm){
-        const response = await fetch('/api/jobs', {
+        const response = await fetch(`/search/${searchTerm}`, {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         });
-        if(response.ok && req.session.loggedIn) {
-            return matchSorter(response, searchTerm, {keys: ['job_title']});
-        } else if (!req.session.loggedIn) {
-            document.location.replace('/login');
-        }
+        
     }
 
 
-};
+}; */
+
+function jobList (){
+    const searchTerm = document.querySelector('#searchfield').value.trim();
+    window.location.href = '/search/'+ searchTerm;
+}
 
 /* router.get('/dashboard', withAuth, async (req, res) => {
     try {
@@ -37,7 +36,15 @@ const jobList = async (event) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }); */
+/* 
+function searchCriteria(){
+const searchbox = document.getElementById("searchfield");
 
-document
-    .querySelector('#search')
-    .addEventListener('submit', jobList);
+if(searchbox){
+    window.location.href = `/search/${searchbox}`;
+}
+} */
+
+
+
+searchButton.addEventListener("click", jobList);
