@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Application, Job, Review } = require('../models');
 const withAuth = require('../utils/auth');
+const {matchSorter} = require('match-sorter');
 
 //Routes needed:
 //  homepage route
@@ -36,6 +37,25 @@ router.get('/dashboard', withAuth, async (req, res) => {
     } catch (err) {
         console.error('Error rendering dashboard:', err);
         res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+/* New for search; Not working, fix */
+router.get('/search/:searchterm', withAuth, async (req, res) => {
+    try{
+        const jobData = await Job.findAll();
+        
+        const sortedJobs = matchSorter(jobData, searchterm, {keys: ['job_title']});
+        const jobs = sortedJobs.map((job) => {
+            job.get({plain: true})
+        });
+        res.render('dashboard', {
+            jobs,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        console.error('Error rendering search:', err);
+        res.status(500).json({error: 'Internal Server Error'});
     }
 });
 

@@ -12,11 +12,14 @@
     </header>
     <nav class="navbar">
         <ul>
-            <li>
-                <a href="/">Homepage</a>
-            </li>
+            
             
                 {{#if loggedIn}}
+                <li><label for="site-search">Search for Job titles</label>
+                    <input type="text" id="searchfield"   />
+                    <button class="btn" type="submit" id="search">Search</button>
+                    {{!-- Need help here --}}
+                    </li>
             <li>
                 <a href="/dashboard">Dashboard</a>
             </li>
@@ -31,6 +34,9 @@
                 <a href="/login">Login</a>
             </li>
                 {{/if}}
+               <li>
+                <a href="/">Homepage</a>
+            </li> 
         </ul>
     </nav>
 <main>
@@ -39,7 +45,9 @@
     </div>
 </main>
 {{#if loggedIn}}
+<script src="/js/search.js"></script>
 <script src="/js/logout.js"></script>
+
 {{/if}}
 </body>
 
