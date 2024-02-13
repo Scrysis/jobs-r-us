@@ -44,15 +44,18 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/search/:searchterm', withAuth, async (req, res) => {
     try{
         const jobData = await Job.findAll();
+        const searchVar = req.params.searchterm;
+        console.log(`searchVar: ${searchVar}`);
         
-        const sortedJobs = matchSorter(jobData, searchterm, {keys: ['job_title']});
+        const sortedJobs = matchSorter(jobData, searchVar, {keys: [item => item.job_title]});
         const jobs = sortedJobs.map((job) => {
             job.get({plain: true})
         });
-        res.render('dashboard', {
+        res.render('search', {
             jobs,
             loggedIn: req.session.loggedIn,
         });
+        
     } catch (err) {
         console.error('Error rendering search:', err);
         res.status(500).json({error: 'Internal Server Error'});
