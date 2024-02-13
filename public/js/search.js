@@ -18,7 +18,11 @@ const searchButton = document.getElementById("search");
 
 function jobList (){
     const searchTerm = document.querySelector('#searchfield').value.trim();
+
+
+    console.log(searchTerm);
     window.location.href = '/search/'+ searchTerm;
+    
 }
 
 /* router.get('/dashboard', withAuth, async (req, res) => {
