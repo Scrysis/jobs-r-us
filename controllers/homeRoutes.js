@@ -44,15 +44,18 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/search/:searchterm', withAuth, async (req, res) => {
     try{
         const jobData = await Job.findAll();
-        const searchVar = req.params.searchterm;
-        console.log(`searchVar: ${searchVar}`);
-        
-        const sortedJobs = matchSorter(jobData, searchVar, {keys: [item => item.job_title]});
-        const jobs = sortedJobs.map((job) => {
-            job.get({plain: true})
+        console.log('jobData line 47:', jobData);
+        const jobs = jobData.map((job) => {
+            return job.get({plain: true});
         });
+        console.log('jobs:', jobs);
+        const searchVar = req.params.searchterm;
+        console.log(`searchVar: ${searchVar}`);        
+        const sortedJobs = matchSorter(jobs, searchVar, {keys: [item => item.job_title]});
+        console.log('sortedJobs line 55:', sortedJobs);
+        
         res.render('search', {
-            jobs,
+            sortedJobs,
             loggedIn: req.session.loggedIn,
         });
         
